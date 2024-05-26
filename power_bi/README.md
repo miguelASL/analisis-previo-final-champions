@@ -22,3 +22,5 @@ Al analizar los datos proporcionados de los equipos Borussia Dortmund y Real Mad
 
 ### 🏅 Conclusión
 En general, estas conclusiones sugieren que mientras **Real Madrid** parece tener una mayor eficacia en el ataque y control del juego, **Borussia Dortmund** muestra una defensa más sólida y una disciplina ligeramente mejor.
+
+![Borussia Dortmund vs. Real Madrid](reporte.png)
