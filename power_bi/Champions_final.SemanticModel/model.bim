@@ -1,0 +1,782 @@
+{
+  "compatibilityLevel": 1567,
+  "model": {
+    "annotations": [
+      {
+        "name": "PBI_QueryOrder",
+        "value": "[\"Construcción RM\",\"Defensa RM\",\"Ataque RM\",\"Defensa BD\",\"Ataque BD\",\"Construcción BD\"]"
+      },
+      {
+        "name": "__PBI_TimeIntelligenceEnabled",
+        "value": "1"
+      },
+      {
+        "name": "PBIDesktopVersion",
+        "value": "2.128.1380.0 (24.04)"
+      },
+      {
+        "name": "PBI_ProTooling",
+        "value": "[\"DevMode\"]"
+      }
+    ],
+    "culture": "es-ES",
+    "cultures": [
+      {
+        "name": "es-ES",
+        "linguisticMetadata": {
+          "content": {
+            "Language": "en-US",
+            "Version": "1.0.0"
+          },
+          "contentType": "json"
+        }
+      }
+    ],
+    "dataAccessOptions": {
+      "legacyRedirects": true,
+      "returnErrorValuesAsNull": true
+    },
+    "defaultPowerBIDataSourceVersion": "powerBI_V3",
+    "relationships": [
+      {
+        "name": "AutoDetected_8873f5b7-f9f5-4e98-9f6d-a18e93b3720e",
+        "crossFilteringBehavior": "bothDirections",
+        "fromCardinality": "one",
+        "fromColumn": "Defensa",
+        "fromTable": "Defensa BD",
+        "toColumn": "Defensa",
+        "toTable": "Defensa RM"
+      },
+      {
+        "name": "AutoDetected_e24e9bed-917f-4137-a937-ac646d344ed8",
+        "crossFilteringBehavior": "bothDirections",
+        "fromCardinality": "one",
+        "fromColumn": "Ataque",
+        "fromTable": "Ataque BD",
+        "toColumn": "Ataque",
+        "toTable": "Ataque RM"
+      }
+    ],
+    "sourceQueryCulture": "es-ES",
+    "tables": [
+      {
+        "name": "DateTableTemplate_6366a9c9-7dc8-4454-982e-bd6b019deb29",
+        "annotations": [
+          {
+            "name": "__PBI_TemplateDateTable",
+            "value": "true"
+          },
+          {
+            "name": "DefaultItem",
+            "value": "DateHierarchy"
+          }
+        ],
+        "columns": [
+          {
+            "name": "Date",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ],
+            "dataCategory": "PaddedDateTableDates",
+            "dataType": "dateTime",
+            "formatString": "General Date",
+            "isHidden": true,
+            "isNameInferred": true,
+            "lineageTag": "5d10a383-f926-45ca-a001-d6b5b34bb28e",
+            "sourceColumn": "[Date]",
+            "summarizeBy": "none",
+            "type": "calculatedTableColumn"
+          },
+          {
+            "name": "Año",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              },
+              {
+                "name": "TemplateId",
+                "value": "Year"
+              }
+            ],
+            "dataCategory": "Years",
+            "dataType": "int64",
+            "expression": "YEAR([Date])",
+            "formatString": "0",
+            "isHidden": true,
+            "lineageTag": "6a9bff39-b448-4830-8c9c-bcd9163ba080",
+            "summarizeBy": "none",
+            "type": "calculated"
+          },
+          {
+            "name": "NroMes",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              },
+              {
+                "name": "TemplateId",
+                "value": "MonthNumber"
+              }
+            ],
+            "dataCategory": "MonthOfYear",
+            "dataType": "int64",
+            "expression": "MONTH([Date])",
+            "formatString": "0",
+            "isHidden": true,
+            "lineageTag": "48ccf1e9-1ec8-481d-9ff7-3884c9cdaaf4",
+            "summarizeBy": "none",
+            "type": "calculated"
+          },
+          {
+            "name": "Mes",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              },
+              {
+                "name": "TemplateId",
+                "value": "Month"
+              }
+            ],
+            "dataCategory": "Months",
+            "dataType": "string",
+            "expression": "FORMAT([Date], \"MMMM\")",
+            "isHidden": true,
+            "lineageTag": "e2240a86-d9ca-4104-a587-44a2afe10c98",
+            "sortByColumn": "NroMes",
+            "summarizeBy": "none",
+            "type": "calculated"
+          },
+          {
+            "name": "NroTrimestre",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              },
+              {
+                "name": "TemplateId",
+                "value": "QuarterNumber"
+              }
+            ],
+            "dataCategory": "QuarterOfYear",
+            "dataType": "int64",
+            "expression": "INT(([NroMes] + 2) / 3)",
+            "formatString": "0",
+            "isHidden": true,
+            "lineageTag": "3088ed47-d137-48ba-8567-57bc6978b264",
+            "summarizeBy": "none",
+            "type": "calculated"
+          },
+          {
+            "name": "Trimestre",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              },
+              {
+                "name": "TemplateId",
+                "value": "Quarter"
+              }
+            ],
+            "dataCategory": "Quarters",
+            "dataType": "string",
+            "expression": "\"Trim. \" & [NroTrimestre]",
+            "isHidden": true,
+            "lineageTag": "0631278b-0e2c-454d-aed8-1a8cc9055130",
+            "sortByColumn": "NroTrimestre",
+            "summarizeBy": "none",
+            "type": "calculated"
+          },
+          {
+            "name": "Día",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              },
+              {
+                "name": "TemplateId",
+                "value": "Day"
+              }
+            ],
+            "dataCategory": "DayOfMonth",
+            "dataType": "int64",
+            "expression": "DAY([Date])",
+            "formatString": "0",
+            "isHidden": true,
+            "lineageTag": "52f7c3b5-d48e-454f-bdcf-e4ba7747c7d0",
+            "summarizeBy": "none",
+            "type": "calculated"
+          }
+        ],
+        "hierarchies": [
+          {
+            "name": "Jerarquía de fechas",
+            "annotations": [
+              {
+                "name": "TemplateId",
+                "value": "DateHierarchy"
+              }
+            ],
+            "levels": [
+              {
+                "name": "Año",
+                "column": "Año",
+                "lineageTag": "b06d4db1-3fc8-4f94-bd29-696ebe16bdb7",
+                "ordinal": 0
+              },
+              {
+                "name": "Trimestre",
+                "column": "Trimestre",
+                "lineageTag": "bf3e96e5-c2de-4791-a8b8-dc9a7690a1b6",
+                "ordinal": 1
+              },
+              {
+                "name": "Mes",
+                "column": "Mes",
+                "lineageTag": "58d6f5a2-b441-4689-86de-22f221321e9b",
+                "ordinal": 2
+              },
+              {
+                "name": "Día",
+                "column": "Día",
+                "lineageTag": "b9e25a58-d69b-4f36-aca3-1dbc7d286e3e",
+                "ordinal": 3
+              }
+            ],
+            "lineageTag": "cdc92642-ca7b-4acd-b22c-3f4fe56f55d7"
+          }
+        ],
+        "isHidden": true,
+        "isPrivate": true,
+        "lineageTag": "707155c5-cd7d-4588-ae1a-ef17fefc2699",
+        "partitions": [
+          {
+            "name": "DateTableTemplate_6366a9c9-7dc8-4454-982e-bd6b019deb29",
+            "mode": "import",
+            "source": {
+              "expression": "Calendar(Date(2015,1,1), Date(2015,1,1))",
+              "type": "calculated"
+            }
+          }
+        ]
+      },
+      {
+        "name": "Construcción RM",
+        "annotations": [
+          {
+            "name": "PBI_ResultType",
+            "value": "Table"
+          }
+        ],
+        "changedProperties": [
+          {
+            "property": "Name"
+          }
+        ],
+        "columns": [
+          {
+            "name": "Construcción",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "de6f4ee9-64c1-4e19-8bd7-968374014e13",
+            "sourceColumn": "Construcción",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Totales",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "dataType": "double",
+            "lineageTag": "4fae208a-a544-43fc-a7c4-3d2748fa0406",
+            "sourceColumn": "Totales",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "Media/%",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "dataType": "double",
+            "lineageTag": "2facbb1d-5f54-42a5-8fcf-ca5b0c38f65b",
+            "sourceColumn": "Media/%",
+            "summarizeBy": "sum"
+          }
+        ],
+        "lineageTag": "3a576f51-5f26-490d-a581-379e79233259",
+        "measures": [
+          {
+            "name": "PasesAcertados",
+            "annotations": [
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "expression": "SUMX(FILTER('Construcción RM', 'Construcción RM'[Construcción] = \"Pases acertados\"), 'Construcción RM'[Totales])",
+            "lineageTag": "6cea5e18-4f70-4e39-a3fb-81684121d43c"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Construcción RM",
+            "mode": "import",
+            "source": {
+              "expression": [
+                "let",
+                "    Origen = Excel.Workbook(File.Contents(\"C:\\Users\\msarm\\Downloads\\Real Madrid.xlsx\"), null, true),",
+                "    Construcción_Sheet = Origen{[Item=\"Construcción\",Kind=\"Sheet\"]}[Data],",
+                "    #\"Encabezados promovidos\" = Table.PromoteHeaders(Construcción_Sheet, [PromoteAllScalars=true]),",
+                "    #\"Tipo cambiado\" = Table.TransformColumnTypes(#\"Encabezados promovidos\",{{\"Construcción\", type text}, {\"Totales\", type number}, {\"Media/%\", type number}})",
+                "in",
+                "    #\"Tipo cambiado\""
+              ],
+              "type": "m"
+            }
+          }
+        ]
+      },
+      {
+        "name": "Defensa RM",
+        "annotations": [
+          {
+            "name": "PBI_ResultType",
+            "value": "Table"
+          }
+        ],
+        "changedProperties": [
+          {
+            "property": "Name"
+          }
+        ],
+        "columns": [
+          {
+            "name": "Defensa",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "ca98aaab-7138-451d-8db3-a907b5bc7cc0",
+            "sourceColumn": "Defensa",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Totales",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "lineageTag": "9aac8e27-746c-4709-b0f4-a154b7f499af",
+            "sourceColumn": "Totales",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "Media/%",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "dataType": "double",
+            "lineageTag": "ea80c89d-d19a-4b36-87be-373fde26eccb",
+            "sourceColumn": "Media/%",
+            "summarizeBy": "sum"
+          }
+        ],
+        "lineageTag": "0e196e34-6747-4258-bfb3-5b1d361a2ec2",
+        "partitions": [
+          {
+            "name": "Defensa RM",
+            "mode": "import",
+            "source": {
+              "expression": [
+                "let",
+                "    Origen = Excel.Workbook(File.Contents(\"C:\\Users\\msarm\\Downloads\\Real Madrid.xlsx\"), null, true),",
+                "    Defensa_Sheet = Origen{[Item=\"Defensa\",Kind=\"Sheet\"]}[Data],",
+                "    #\"Encabezados promovidos\" = Table.PromoteHeaders(Defensa_Sheet, [PromoteAllScalars=true]),",
+                "    #\"Tipo cambiado\" = Table.TransformColumnTypes(#\"Encabezados promovidos\",{{\"Defensa\", type text}, {\"Totales\", Int64.Type}, {\"Media/%\", type number}})",
+                "in",
+                "    #\"Tipo cambiado\""
+              ],
+              "type": "m"
+            }
+          }
+        ]
+      },
+      {
+        "name": "Ataque RM",
+        "annotations": [
+          {
+            "name": "PBI_ResultType",
+            "value": "Table"
+          }
+        ],
+        "changedProperties": [
+          {
+            "property": "Name"
+          }
+        ],
+        "columns": [
+          {
+            "name": "Ataque",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "3d96b6c6-272f-48d6-bff3-5afeb1e7c192",
+            "sourceColumn": "Ataque",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Ataque_1",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "lineageTag": "19c1b186-b1a6-4412-b348-bf2399b0c5e8",
+            "sourceColumn": "Ataque_1",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "Ataque_2",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "dataType": "double",
+            "lineageTag": "69f5295f-6b80-4f84-a72c-b7828ba393a6",
+            "sourceColumn": "Ataque_2",
+            "summarizeBy": "sum"
+          }
+        ],
+        "lineageTag": "825f92d7-8239-459d-9683-28acc90e8feb",
+        "partitions": [
+          {
+            "name": "Ataque RM",
+            "mode": "import",
+            "source": {
+              "expression": [
+                "let",
+                "    Origen = Excel.Workbook(File.Contents(\"C:\\Users\\msarm\\Downloads\\Real Madrid.xlsx\"), null, true),",
+                "    Ataque_Sheet = Origen{[Item=\"Ataque\",Kind=\"Sheet\"]}[Data],",
+                "    #\"Encabezados promovidos\" = Table.PromoteHeaders(Ataque_Sheet, [PromoteAllScalars=true]),",
+                "    #\"Tipo cambiado\" = Table.TransformColumnTypes(#\"Encabezados promovidos\",{{\"Ataque\", type text}, {\"Ataque_1\", Int64.Type}, {\"Ataque_2\", type number}})",
+                "in",
+                "    #\"Tipo cambiado\""
+              ],
+              "type": "m"
+            }
+          }
+        ]
+      },
+      {
+        "name": "Defensa BD",
+        "annotations": [
+          {
+            "name": "PBI_ResultType",
+            "value": "Table"
+          }
+        ],
+        "changedProperties": [
+          {
+            "property": "Name"
+          }
+        ],
+        "columns": [
+          {
+            "name": "Defensa",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "905db789-74e8-484e-8c02-6f13d0fb4ddf",
+            "sourceColumn": "Defensa",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Totales",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "lineageTag": "de5b51eb-41b4-4f53-b9ba-1af05c855ca8",
+            "sourceColumn": "Totales",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "Media/%",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "lineageTag": "9885ed19-ed80-4ab2-acfc-a890c62c89c3",
+            "sourceColumn": "Media/%",
+            "summarizeBy": "sum"
+          }
+        ],
+        "lineageTag": "792f7c5f-9724-4c5f-bc55-3df8ddb2337c",
+        "partitions": [
+          {
+            "name": "Defensa BD",
+            "mode": "import",
+            "source": {
+              "expression": [
+                "let",
+                "    Origen = Excel.Workbook(File.Contents(\"C:\\Users\\msarm\\Downloads\\Borussia Dortmund.xlsx\"), null, true),",
+                "    Defensa_Sheet = Origen{[Item=\"Defensa\",Kind=\"Sheet\"]}[Data],",
+                "    #\"Encabezados promovidos\" = Table.PromoteHeaders(Defensa_Sheet, [PromoteAllScalars=true]),",
+                "    #\"Tipo cambiado\" = Table.TransformColumnTypes(#\"Encabezados promovidos\",{{\"Defensa\", type text}, {\"Totales\", Int64.Type}, {\"Media/%\", Int64.Type}})",
+                "in",
+                "    #\"Tipo cambiado\""
+              ],
+              "type": "m"
+            }
+          }
+        ]
+      },
+      {
+        "name": "Ataque BD",
+        "annotations": [
+          {
+            "name": "PBI_ResultType",
+            "value": "Table"
+          }
+        ],
+        "changedProperties": [
+          {
+            "property": "Name"
+          }
+        ],
+        "columns": [
+          {
+            "name": "Ataque",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "66a74091-d893-45af-8d2e-d98097527964",
+            "sourceColumn": "Ataque",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Totales",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "lineageTag": "dd47d6b7-9dee-487d-ab6b-04a14bd52581",
+            "sourceColumn": "Totales",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "Media/%",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "dataType": "double",
+            "lineageTag": "3a24ad23-adc9-4707-85d6-ad3802c41553",
+            "sourceColumn": "Media/%",
+            "summarizeBy": "sum"
+          }
+        ],
+        "lineageTag": "b98c0bc4-f06c-46c6-ba1a-50c726fff817",
+        "partitions": [
+          {
+            "name": "Ataque BD",
+            "mode": "import",
+            "source": {
+              "expression": [
+                "let",
+                "    Origen = Excel.Workbook(File.Contents(\"C:\\Users\\msarm\\Downloads\\Borussia Dortmund.xlsx\"), null, false),",
+                "    Ataque_sheet = Origen{[Item=\"Ataque\",Kind=\"Sheet\"]}[Data],",
+                "    FilterNullAndWhitespace = each List.Select(_, each _ <> null and (not (_ is text) or Text.Trim(_) <> \"\")),",
+                "    #\"Otras columnas quitadas\" = Table.SelectColumns(Ataque_sheet, List.Select(Table.ColumnNames(Ataque_sheet), each try not List.IsEmpty(FilterNullAndWhitespace(Table.Column(Ataque_sheet, _))) otherwise true)),",
+                "    #\"Filas en blanco eliminadas\" = Table.SelectRows(#\"Otras columnas quitadas\", each not List.IsEmpty(FilterNullAndWhitespace(Record.FieldValues(_)))),",
+                "    #\"Encabezados promovidos\" = Table.PromoteHeaders(#\"Filas en blanco eliminadas\", [PromoteAllScalars=true]),",
+                "    #\"Tipo cambiado\" = Table.TransformColumnTypes(#\"Encabezados promovidos\",{{\"Ataque\", type text}, {\"Totales\", Int64.Type}, {\"Media/%\", type number}})",
+                "in",
+                "    #\"Tipo cambiado\""
+              ],
+              "type": "m"
+            }
+          }
+        ]
+      },
+      {
+        "name": "Construcción BD",
+        "annotations": [
+          {
+            "name": "PBI_ResultType",
+            "value": "Table"
+          }
+        ],
+        "changedProperties": [
+          {
+            "property": "Name"
+          }
+        ],
+        "columns": [
+          {
+            "name": "Construcción",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "72da0767-ce1e-4751-adff-f4f581a2cbfb",
+            "sourceColumn": "Construcción",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Totales",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "dataType": "double",
+            "lineageTag": "b4a9caed-e45e-4b18-a4f2-5cbdf115a985",
+            "sourceColumn": "Totales",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "Media/%",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "dataType": "double",
+            "lineageTag": "7b16031e-2a4a-4dbc-8e4f-4d0dc4a651cf",
+            "sourceColumn": "Media/%",
+            "summarizeBy": "sum"
+          }
+        ],
+        "lineageTag": "48620d47-e6ea-4e07-8578-5d8004c05fe0",
+        "measures": [
+          {
+            "name": "PasesAcertadosBD",
+            "annotations": [
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "expression": "SUMX(FILTER('Construcción BD', 'Construcción BD'[Construcción] = \"Pases acertados\"), 'Construcción BD'[Totales])",
+            "lineageTag": "5eefb292-234b-471d-b2d0-01093f1b73f1"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Construcción BD",
+            "mode": "import",
+            "source": {
+              "expression": [
+                "let",
+                "    Origen = Excel.Workbook(File.Contents(\"C:\\Users\\msarm\\Downloads\\Borussia Dortmund.xlsx\"), null, false),",
+                "    Construcción_sheet = Origen{[Item=\"Construcción\",Kind=\"Sheet\"]}[Data],",
+                "    FilterNullAndWhitespace = each List.Select(_, each _ <> null and (not (_ is text) or Text.Trim(_) <> \"\")),",
+                "    #\"Otras columnas quitadas\" = Table.SelectColumns(Construcción_sheet, List.Select(Table.ColumnNames(Construcción_sheet), each try not List.IsEmpty(FilterNullAndWhitespace(Table.Column(Construcción_sheet, _))) otherwise true)),",
+                "    #\"Encabezados promovidos\" = Table.PromoteHeaders(#\"Otras columnas quitadas\", [PromoteAllScalars=true]),",
+                "    #\"Tipo cambiado\" = Table.TransformColumnTypes(#\"Encabezados promovidos\",{{\"Construcción\", type text}, {\"Totales\", type number}, {\"Media/%\", type number}})",
+                "in",
+                "    #\"Tipo cambiado\""
+              ],
+              "type": "m"
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

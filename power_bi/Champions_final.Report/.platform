@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "Champions_final"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "d6183155-a8e1-450f-b213-6c1c6f413475"
+  }
+}

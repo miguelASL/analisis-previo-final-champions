@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "SemanticModel",
+    "displayName": "Champions_final"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "cc3cc788-85b7-4cd0-bd5f-49ab8219d9fd"
+  }
+}
